@@ -1,9 +1,4 @@
 const imagenes = [
-    "Images/Old Ones/578151_adapted_1080x2340.jpg",
-    "Images/Old Ones/786111_original_2160x3840.jpg",
-    "Images/Old Ones/788215_original_2160x3840.jpg",
-    "Images/Old Ones/1662272395709.jpg",
-    "Images/Old Ones/1662806453742.jpg",
     "Images/Old Ones/1662807278874.jpg",
     "Images/Old Ones/1662807323263.jpg",
     "Images/Old Ones/1662807562736.jpg",

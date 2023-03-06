@@ -58,8 +58,12 @@ imagenes.forEach(imagen => {
 function lazyLoad(images) {
     images.forEach(image => {
         if (image.getAttribute('data-src')) {
+            image.onload = () => {
+                image.removeAttribute('data-src');
+                image.style.opacity = 1; // Agregamos la opacidad gradualmente
+            };
             image.setAttribute('src', image.getAttribute('data-src'));
-            image.onload = () => image.removeAttribute('data-src');
+            image.style.opacity = 0; // Comenzamos con opacidad 0
         }
     });
 }
