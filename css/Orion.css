@@ -1,0 +1,129 @@
+/*All*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Header*/
+header{
+    width: 100%;
+    background-color: rgb(59, 58, 58);
+    text-align: center;
+}
+
+.texto{
+    font-family: 'Tilt Warp';
+}
+
+h1{
+    padding: 20px;
+    font-size: 35px;
+}
+
+h6{
+    font-size: 15px;
+    padding-bottom: 2em;
+}
+
+/*Body*/
+.container{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_1{
+    text-align: center;
+    width: 65%;
+    margin: 2em;
+    background: rgb(80,79,87);
+    background: linear-gradient(90deg, rgba(80,79,87,1) 0%, rgba(129,119,127,1) 66%);
+    border-radius: 20px;
+}
+
+.card_2{
+    text-align: center;
+    width: 65%;
+    margin: 2em;
+    background: rgb(133,93,128);
+    background: linear-gradient(180deg, rgba(133,93,128,1) 0%, rgba(164,200,180,1) 89%, rgba(178,234,187,1) 100%);
+    border-radius: 20px;
+}
+
+img{
+    width: 80%;
+    height: 12em;
+    margin-top: 35px;
+    border-radius: 20px;
+    filter: blur(20px);
+    transition: filter 0.8s ease;
+}
+
+.text_up{
+    position:sticky;
+    top: 50%;
+    left: 50%;
+    transform: translate(0, -325%);
+    z-index: 1;
+    transition: 0.8s ease;
+}
+
+article{
+    background: linear-gradient(to right, rgb(255, 174, 0), rgb(240, 25, 25));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3em;
+    font-size: 25px;
+    font-family: 'Tilt Warp', cursive;
+}
+
+/*Effects (Body)*/
+.card_1:hover .text_up{
+    transform: translate(-10%, -120%);
+    transition: 0.3s ease;
+}
+
+.card_1:hover article{
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card_1:hover img{
+    filter: blur(0);
+    transition: filter 0.3s ease;
+}
+
+.card_2:hover .text_up{
+    transform: translate(-10%, -120%);
+    transition: 0.3s ease;
+    
+}
+
+.card_2:hover article{
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card_2:hover img{
+    filter: blur(0);
+    transition: filter 0.3s ease;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .texto {
+    font-size: 14px;
+  }
+  .card_1, .card_2 {
+    width: 90%;
+  }
+
+  .container{
+    flex-wrap: wrap;
+  }
+}
