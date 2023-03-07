@@ -52,7 +52,14 @@ function crearElemento(tag, props, parent) {
 const grid = document.querySelector(".grid");
 
 imagenes.forEach(imagen => {
-    crearElemento('img', { src: imagen, alt: 'imagen', className: 'imagen', 'data-src': imagen }, grid);
+    const img = crearElemento('img', { src: imagen, alt: 'imagen', className: 'imagen', 'data-src': imagen }, grid);
+    img.addEventListener('click', () => {
+        const overlay = crearElemento('div', { className: 'overlay' }, document.body);
+        const imgGrande = crearElemento('img', { src: imagen, alt: 'imagen', className: 'img-grande' }, overlay);
+        const botonCerrar = crearElemento('button', { innerHTML: 'Cerrar', className: 'boton-cerrar' }, overlay);
+        imgGrande.style.pointerEvents = 'none';
+        botonCerrar.addEventListener('click', () => overlay.remove());
+    });
 });
 
 function lazyLoad(images) {
@@ -60,10 +67,8 @@ function lazyLoad(images) {
         if (image.getAttribute('data-src')) {
             image.onload = () => {
                 image.removeAttribute('data-src');
-                image.style.opacity = 1; // Agregamos la opacidad gradualmente
             };
             image.setAttribute('src', image.getAttribute('data-src'));
-            image.style.opacity = 0; // Comenzamos con opacidad 0
         }
     });
 }
