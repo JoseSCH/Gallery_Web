@@ -146,8 +146,12 @@ footer{
       padding: 2em;
     }
 
+    .grid{
+        padding: 50px;
+    }
+
     .grid img{
-        width: 50%;
+        margin: 10px 0px;
     }
 
     .img-grande img{
