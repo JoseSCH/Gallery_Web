@@ -149,5 +149,9 @@ footer{
     .grid img{
         width: 50%;
     }
+
+    .img-grande img{
+        width: 100%;
+    }
 }
 
