@@ -126,6 +126,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  .header h4 {
+    font-size: 20px;
+  }
+
   footer {
     flex-wrap: wrap;
     justify-content: center;
