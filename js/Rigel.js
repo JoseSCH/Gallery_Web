@@ -41,10 +41,12 @@ const imagenes = [
     "Images/New Ones/1677827083849.jpg",
     "Images/New Ones/1677827328303.jpg",
 ];
-  
+
 function crearElemento(tag, props, parent) {
     const element = document.createElement(tag);
-    Object.keys(props).forEach(key => element[key] = props[key]);
+    if (typeof props === 'object') {
+        Object.keys(props).forEach(key => element[key] = props[key]);
+    } 
     if (parent) parent.appendChild(element);
     return element;
 }
@@ -60,20 +62,4 @@ imagenes.forEach(imagen => {
         imgGrande.style.pointerEvents = 'none';
         botonCerrar.addEventListener('click', () => overlay.remove());
     });
-});
-
-function lazyLoad(images) {
-    images.forEach(image => {
-        if (image.getAttribute('data-src')) {
-            image.onload = () => {
-                image.removeAttribute('data-src');
-            };
-            image.setAttribute('src', image.getAttribute('data-src'));
-        }
-    });
-}
-
-window.addEventListener('scroll', () => {
-    const images = document.querySelectorAll('.imagen');
-    lazyLoad(images);
 });
