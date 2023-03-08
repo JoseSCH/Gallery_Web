@@ -53,7 +53,6 @@ function crearElemento(tag, props, parent) {
 
 const grid = document.querySelector(".grid");
 
-// Agregar los atributos data-aos y data-aos-delay a cada imagen
 imagenes.forEach((imagen) => {
   const img = crearElemento('img', { src: imagen, alt: 'imagen', className: 'imagen', 'data-src': imagen }, grid);
   img.setAttribute('data-aos', 'fade-up');
