@@ -6,6 +6,10 @@
   font-family: 'Tilt Warp', cursive;
 }
 
+body {
+  background-color: black;
+}
+
 /*Header*/
 
 header {
@@ -52,14 +56,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80%;
   padding: 8px;
   background-color: black;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 10px;
   padding: 10px;
 }
@@ -154,6 +157,7 @@ footer {
 
   .grid {
     padding: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
   }
 
   .grid img {

@@ -42,7 +42,7 @@ const imagenes = [
   "Images/New Ones/1677827328303.jpg",
 ];
 
-function crearElemento(tag, props, parent) {
+const crearElemento = (tag, props, parent) => {
   const element = document.createElement(tag);
   if (typeof props === 'object') {
     Object.keys(props).forEach(key => element[key] = props[key]);
@@ -52,6 +52,12 @@ function crearElemento(tag, props, parent) {
 }
 
 const grid = document.querySelector(".grid");
+window.onload = () => {
+  setTimeout(() => {
+    let body = document.querySelector("body");
+    body.removeAttribute("data-aos");
+  }, 2000);
+}
 
 imagenes.forEach((imagen) => {
   const img = crearElemento('img', { src: imagen, alt: 'imagen', className: 'imagen', 'data-src': imagen }, grid);
@@ -64,3 +70,4 @@ imagenes.forEach((imagen) => {
     botonCerrar.addEventListener('click', () => overlay.remove());
   });
 });
+
