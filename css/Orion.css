@@ -16,6 +16,7 @@ header {
   width: 100%;
   background-color: rgb(59, 58, 58);
   text-align: center;
+  border: none;
 }
 
 .header h1 {
@@ -156,7 +157,7 @@ footer {
   }
 
   .grid {
-    padding: 50px;
+    padding: 5px;
     grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
   }
 
