@@ -42,16 +42,23 @@ const imagenes = [
   "Images/New Ones/1677827328303.jpg",
 ];
 
-const crearElemento = (tag, props, parent) => {
+function crearElemento(tag, props, parent) {
   const element = document.createElement(tag);
   if (typeof props === 'object') {
-    Object.keys(props).forEach(key => element[key] = props[key]);
+    for (let key in props) {
+      if (props.hasOwnProperty(key)) {
+        element[key] = props[key];
+      }
+    }
   }
-  if (parent) parent.appendChild(element);
+  if (parent) {
+    parent.appendChild(element);
+  }
   return element;
 }
 
 const grid = document.querySelector(".grid");
+
 window.onload = () => {
   setTimeout(() => {
     let body = document.querySelector("body");
