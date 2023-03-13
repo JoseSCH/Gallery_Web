@@ -198,6 +198,14 @@ footer {
     font-size: 15px;
   }
 
+  .botonSiguiente {
+    top: 95vh;
+  }
+
+  .botonAnterior {
+    top: 95vh;
+  }
+
   footer {
     flex-wrap: wrap;
     justify-content: center;
