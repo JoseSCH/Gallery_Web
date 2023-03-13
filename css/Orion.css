@@ -49,7 +49,7 @@ header {
 }
 
 .header h4 {
-  font-size: 20px;
+  font-size: 28px;
   padding-bottom: 2em;
   text-shadow: 1px 3px 10px rgb(164, 25, 168);
 }
@@ -124,6 +124,32 @@ header {
   color: black;
 }
 
+.botonSiguiente {
+  position: absolute;
+  width: 100px;
+  height: 25px;
+  top: 50vh;
+  right: 35px;
+  border-radius: 10px;
+  background-color: rgb(164, 25, 168);
+  color: black;
+  animation: fintaBoton 0.2s infinite ease;
+}
+
+@keyframes fintaBoton {
+  0% {
+    transform: translateX(2px);
+  }
+
+  50% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(2px);
+  }
+}
+
 /*Footer*/
 footer {
   width: 100%;
@@ -137,6 +163,7 @@ footer {
   padding: 1em;
   border-right: 2px solid #a419a8;
   text-shadow: 1px 1px 10px rgb(164, 25, 168);
+  color: rgb(30, 2, 31);
 }
 
 .fc-1 li {
@@ -148,12 +175,13 @@ footer {
 .fc-2 {
   padding: 5em;
   text-shadow: 1px 1px 10px rgb(164, 25, 168);
+  color: rgb(30, 2, 31);
 }
 
 @media (max-width: 768px) {
 
   .header h4 {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   footer {
