@@ -14,9 +14,11 @@ body {
 
 header {
   width: 100%;
-  background-color: rgb(59, 58, 58);
+  height: 200px;
+  background: linear-gradient(to bottom, rgb(0, 0, 0), #f8670c);
   text-align: center;
-  border: none;
+  border-bottom-left-radius: 50% 20px;
+  border-bottom-right-radius: 50% 20px;
 }
 
 .header h1 {
@@ -49,6 +51,7 @@ header {
 .header h4 {
   font-size: 20px;
   padding-bottom: 2em;
+  text-shadow: 1px 3px 10px rgb(164, 25, 168);
 }
 
 /*Body*/
@@ -75,7 +78,7 @@ header {
 }
 
 .grid img:hover {
-  box-shadow: 0px 0px 20px 5px rgb(133, 187, 231);
+  box-shadow: 0px 0px 20px 5px #f8670c;
   transition: 0.1s ease all;
 }
 
@@ -96,12 +99,28 @@ header {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
+  border-radius: 15px;
+  animation: img_big 0.2s normal ease;
+}
+
+@keyframes img_big {
+  0% {
+    transform: scale(0.01);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .boton-cerrar {
   position: absolute;
+  width: 100px;
+  height: 25px;
   top: 10px;
-  right: 10px;
+  right: 35px;
+  border-radius: 10px;
+  background-color: rgb(164, 25, 168);
   color: black;
 }
 
@@ -117,6 +136,7 @@ footer {
 .fc-1 {
   padding: 1em;
   border-right: 2px solid #a419a8;
+  text-shadow: 1px 1px 10px rgb(164, 25, 168);
 }
 
 .fc-1 li {
@@ -127,6 +147,7 @@ footer {
 
 .fc-2 {
   padding: 5em;
+  text-shadow: 1px 1px 10px rgb(164, 25, 168);
 }
 
 @media (max-width: 768px) {

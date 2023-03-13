@@ -56,7 +56,7 @@ window.onload = () => {
   setTimeout(() => {
     let body = document.querySelector("body");
     body.removeAttribute("data-aos");
-  }, 2000);
+  }, 1000);
 }
 
 imagenes.forEach((imagen) => {
@@ -67,7 +67,13 @@ imagenes.forEach((imagen) => {
     const imgGrande = crearElemento('img', { src: imagen, alt: 'imagen', className: 'img-grande' }, overlay);
     const botonCerrar = crearElemento('button', { innerHTML: 'Cerrar', className: 'boton-cerrar' }, overlay);
     imgGrande.style.pointerEvents = 'none';
-    botonCerrar.addEventListener('click', () => overlay.remove());
+    botonCerrar.addEventListener('click', () => {
+      imgGrande.style.transform = "scale(0.01)"
+      imgGrande.style.transition = "0.2s ease";
+      setTimeout(() => {
+        overlay.remove();
+      }, 200);
+    });
   });
 });
 
