@@ -82,135 +82,145 @@ window.onload = () => {
     }, 1000);
 }
 
-// Iterando el array de imágenes.
-imagenes.forEach((imagen, posicion) => {
-    try {
-        // Creando un elemento img y estableciendo sus atributos.
-        const img = crearElemento('img', {
-            src: imagen,
-            alt: 'imagen',
-            className: 'imagen',
-            'data-src': imagen
-        }, grid);
-        // Estableciendo el atributo "data-aos" en "fade-up" para animación.
-        img.setAttribute('data-aos', 'fade-up');
-        // Agregando un event listener "click" a la imagen creada.
-        img.addEventListener('click', () => {
-            try {
-                // Creando un elemento "div" con la clase "overlay" y lo agregando al "body" del documento.
-                const overlay = crearElemento('div', { className: 'overlay' }, document.body);
-                // Creando un elemento "img" y estableciendo sus atributos.
-                const imgGrande = crearElemento('img', {
-                    src: imagen,
-                    alt: 'imagen',
-                    className: 'img-grande'
-                }, overlay);
+try {
+    // Iterando el array de imágenes.
+    imagenes.forEach((imagen, posicion) => {
+        try {
+            //Obteniendo el nombre del archivo.
+            let imgName = imagenes[posicion].split("/").pop();
+            // Creando un elemento img y estableciendo sus atributos.
+            const img = crearElemento('img', {
+                src: imagen,
+                alt: imgName,
+                className: 'imagen',
+                'data-src': imagen
+            }, grid);
+            // Estableciendo el atributo "data-aos" en "fade-up" para animación.
+            img.setAttribute('data-aos', 'fade-up');
+            // Agregando un event listener "click" a la imagen creada.
+            img.addEventListener('click', () => {
+                try {
+                    // Creando un elemento "div" con la clase "overlay" y lo agregando al "body" del documento.
+                    const overlay = crearElemento('div', { className: 'overlay' }, document.body);
+                    // Creando un elemento "img" y estableciendo sus atributos.
+                    const imgGrande = crearElemento('img', {
+                        src: imagen,
+                        alt: 'imagen',
+                        className: 'img-grande'
+                    }, overlay);
 
-                //Creando un botón "cerrar" y estableciendo sus atributos.
-                const botonCerrar = crearElemento('button', {
-                    innerHTML: 'Cerrar',
-                    className: 'boton-cerrar'
-                }, overlay);
+                    //Creando un botón "cerrar" y estableciendo sus atributos.
+                    const botonCerrar = crearElemento('button', {
+                        innerHTML: 'Cerrar',
+                        className: 'boton-cerrar'
+                    }, overlay);
 
-                //Creación de boton para siguiente elemento.
-                const botonSiguiente = crearElemento('button', {
-                    innerHTML: '>',
-                    className: 'botonSiguiente'
-                }, overlay);
+                    //Creación de boton para siguiente elemento.
+                    const botonSiguiente = crearElemento('button', {
+                        innerHTML: '>',
+                        className: 'botonSiguiente'
+                    }, overlay);
 
-                //Creación de boton para el elemento anterior.
-                const botonAnterior = crearElemento('button', {
-                    innerHTML: '<',
-                    className: 'botonAnterior'
-                }, overlay);
+                    //Creación de boton para el elemento anterior.
+                    const botonAnterior = crearElemento('button', {
+                        innerHTML: '<',
+                        className: 'botonAnterior'
+                    }, overlay);
 
-                //Agregando un event listener "click" al botón "siguiente"
-                botonSiguiente.addEventListener('click', () => {
-                    try {
-                        //Incrementamos nuestra poscisión en el array para usar la siguiente imagen.
-                        posicion++;
-                        //Si la posición excede el total de imagenes, se retorna a la primera.
-                        if (posicion > imagenes.length - 1) {
-                            posicion = 0;
+                    //Agregando un event listener "click" al botón "siguiente"
+                    botonSiguiente.addEventListener('click', () => {
+                        try {
+                            //Incrementamos nuestra poscisión en el array para usar la siguiente imagen.
+                            posicion++;
+                            //Si la posición excede el total de imagenes, se retorna a la primera.
+                            if (posicion > imagenes.length - 1) {
+                                posicion = 0;
+                            }
+                            //Agregamos estilos para que la transición entre las imagenes no se vea fea >:).
+                            imgGrande.style.transform = "scale(0.01)";
+                            imgGrande.style.transition = "0.2s ease";
+                            //Indicamos que se tardará 200ms para hacer el cambio de imagen y volverla al tamaño original.
+                            setTimeout(() => {
+                                //Se cambia el atributo src de la imagen para mostrar la siguiente imagen del arreglo.
+                                imgGrande.src = imagenes[posicion];
+                                imgGrande.style.transform = "scale(1)";
+                            }, 200);
+                        } catch (e) {
+                            console.log("A error has ocurred: " + e);
+                            alert("A error has ocurred, please refresh the page: " + e);
                         }
-                        //Agregamos estilos para que la transición entre las imagenes no se vea fea >:).
-                        imgGrande.style.transform = "scale(0.01)";
-                        imgGrande.style.transition = "0.2s ease";
-                        //Indicamos que se tardará 200ms para hacer el cambio de imagen y volverla al tamaño original.
-                        setTimeout(() => {
-                            //Se cambia el atributo src de la imagen para mostrar la siguiente imagen del arreglo.
-                            imgGrande.src = imagenes[posicion];
-                            imgGrande.style.transform = "scale(1)";
-                        }, 200);
-                    } catch (e) {
-                        console.log("A error has ocurred: " + e);
-                        alert("A error has ocurred, please refresh the page: " + e);
-                    }
-                });
+                    });
 
-                //Agregando un event listener "click" al botón "siguiente"
-                botonAnterior.addEventListener('click', () => {
-                    try {
-                        //Decrementamos nuestra poscisión en el array para usar la imagen anterior.
-                        posicion--;
-                        //Si la posición baja 0 o menos, se retorna a la última imagen.
-                        if (posicion <= 0) {
-                            posicion = imagenes.length - 1;
+                    //Agregando un event listener "click" al botón "siguiente"
+                    botonAnterior.addEventListener('click', () => {
+                        try {
+                            //Decrementamos nuestra poscisión en el array para usar la imagen anterior.
+                            posicion--;
+                            //Si la posición baja 0 o menos, se retorna a la última imagen.
+                            if (posicion <= 0) {
+                                posicion = imagenes.length - 1;
+                            }
+                            //Agregamos estilos para que la transición entre las imagenes no se vea fea >:).
+                            imgGrande.style.transform = "scale(0.01)";
+                            imgGrande.style.transition = "0.2s ease";
+                            //Indicamos que se tardará 200ms para hacer el cambio de imagen y volverla al tamaño original.
+                            setTimeout(() => {
+                                //Se cambia el atributo src de la imagen para mostrar la siguiente imagen del arreglo.
+                                imgGrande.src = imagenes[posicion];
+                                imgGrande.style.transform = "scale(1)";
+                            }, 200);
+                        } catch (e) {
+                            console.log("A error has ocurred: " + e);
+                            alert("A error has ocurred, please refresh the page: " + e);
                         }
-                        //Agregamos estilos para que la transición entre las imagenes no se vea fea >:).
-                        imgGrande.style.transform = "scale(0.01)";
-                        imgGrande.style.transition = "0.2s ease";
-                        //Indicamos que se tardará 200ms para hacer el cambio de imagen y volverla al tamaño original.
-                        setTimeout(() => {
-                            //Se cambia el atributo src de la imagen para mostrar la siguiente imagen del arreglo.
-                            imgGrande.src = imagenes[posicion];
-                            imgGrande.style.transform = "scale(1)";
-                        }, 200);
-                    } catch (e) {
-                        console.log("A error has ocurred: " + e);
-                        alert("A error has ocurred, please refresh the page: " + e);
-                    }
-                });
+                    });
 
-                // Agregando un event listener "click" al botón "cerrar".
-                botonCerrar.addEventListener('click', () => {
-                    try {
-                        // Escalando la imagen grande a 0.01 y estableciendo la duración de la animación en 0.2s.
-                        imgGrande.style.transform = "scale(0.01)";
-                        imgGrande.style.transition = "0.2s ease";
+                    // Agregando un event listener "click" al botón "cerrar".
+                    botonCerrar.addEventListener('click', () => {
+                        try {
+                            // Escalando la imagen grande a 0.01 y estableciendo la duración de la animación en 0.2s.
+                            imgGrande.style.transform = "scale(0.01)";
+                            imgGrande.style.transition = "0.2s ease";
 
-                        //Escalando los botones de la misma manera que la imagen para dar un efecto más bonito :).
-                        botonCerrar.style.transform = "scale(0.01)";
-                        botonCerrar.style.transition = "0.2s ease";
+                            //Escalando los botones de la misma manera que la imagen para dar un efecto más bonito :).
+                            botonCerrar.style.transform = "scale(0.01)";
+                            botonCerrar.style.transition = "0.2s ease";
 
-                        botonSiguiente.style.transform = "scale(0.01)";
-                        botonSiguiente.style.transition = "0.2s ease";
+                            botonSiguiente.style.transform = "scale(0.01)";
+                            botonSiguiente.style.transition = "0.2s ease";
 
-                        botonAnterior.style.transform = "scale(0.01)";
-                        botonAnterior.style.transition = "0.2s ease";
+                            botonAnterior.style.transform = "scale(0.01)";
+                            botonAnterior.style.transition = "0.2s ease";
 
-                        //El mismo efecto para el elemento "overlay".
-                        overlay.style.background = "rgba(0, 0, 0, 0.0)";
-                        overlay.style.transition = "0.5s ease";
+                            //El mismo efecto para el elemento "overlay".
+                            overlay.style.background = "rgba(0, 0, 0, 0.0)";
+                            overlay.style.transition = "0.5s ease";
 
-                        // Borra el overlay después de 200ms.
-                        setTimeout(() => {
-                            overlay.remove();
-                        }, 200);
-                    } catch (e) {
-                        console.log("A error has ocurred: " + e);
-                        alert("A error has ocurred, please refresh the page: " + e);
-                    }
-                });
-                // Desactivando la propiedad pointer-events en "imgGrande" para evitar cualquier animación no deseada cuando la imagen este en pantalla completa.
-                imgGrande.style.pointerEvents = 'none';
-            } catch (e) {
-                console.log("A error has ocurred: " + e);
-                alert("A error has ocurred, please refresh the page: " + e);
-            }
-        });
-    } catch (e) {
-        console.log("A error has ocurred: " + e);
-        alert("A error has ocurred, please refresh the page: " + e);
-    }
-});
+                            // Borra el overlay después de 200ms.
+                            setTimeout(() => {
+                                overlay.remove();
+                            }, 200);
+                        } catch (e) {
+                            console.log("A error has ocurred: " + e);
+                            alert("A error has ocurred, please refresh the page: " + e);
+                        }
+                    });
+                    // Desactivando la propiedad pointer-events en "imgGrande" para evitar cualquier animación no deseada cuando la imagen este en pantalla completa.
+                    imgGrande.style.pointerEvents = 'none';
+                } catch (e) {
+                    console.log("A error has ocurred: " + e);
+                    alert("A error has ocurred, please refresh the page: " + e);
+                }
+            });
+        } catch (e) {
+            console.log("A error has ocurred: " + e);
+            alert("A error has ocurred, please refresh the page: " + e);
+        }
+    });
+} catch (e) {
+    console.log("A error has ocurred: " + e);
+    alert("A error has ocurred, please refresh the page: " + e);
+} finally {
+    //Eliminación de una variable que no se ocupa.
+    delete imgName;
+}
